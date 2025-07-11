@@ -176,3 +176,107 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+function territorios_de_cuidado_registrar_cpt_curso() {
+	$labels = array(
+		'name'                  => _x( 'Cursos', 'Post Type General Name', 'territorios_de_cuidado' ),
+		'singular_name'         => _x( 'Curso', 'Post Type Singular Name', 'territorios_de_cuidado' ),
+		'menu_name'             => __( 'Cursos', 'territorios_de_cuidado' ),
+		'all_items'             => __( 'Todos os Cursos', 'territorios_de_cuidado' ),
+		'add_new_item'          => __( 'Adicionar Novo Curso', 'territorios_de_cuidado' ),
+		'add_new'               => __( 'Adicionar Novo', 'territorios_de_cuidado' ),
+	);
+	$args = array(
+		'label'                 => __( 'Curso', 'territorios_de_cuidado' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-welcome-learn-more',
+		'has_archive'           => true,
+		'rewrite'               => array( 'slug' => 'curso' ),
+	);
+	register_post_type( 'curso', $args );
+}
+add_action( 'init', 'territorios_de_cuidado_registrar_cpt_curso', 0 );
+
+function territorios_de_cuidado_registrar_cpt_modulo() {
+    $labels = array(
+        'name' => 'Módulos',
+        'singular_name' => 'Módulo',
+        'add_new_item' => 'Adicionar Novo Módulo',
+        'edit_item' => 'Editar Módulo',
+        'new_item' => 'Novo Módulo',
+        'view_item' => 'Ver Módulo',
+        'search_items' => 'Procurar Módulos',
+        'not_found' => 'Nenhum módulo encontrado',
+        'not_found_in_trash' => 'Nenhum módulo na lixeira',
+    );
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => 'edit.php?post_type=curso',
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'hierarchical' => false,
+        'menu_icon' => 'dashicons-media-text',
+        'rewrite' => array('slug' => 'modulo'),
+    );
+    register_post_type('modulo', $args);
+}
+add_action('init', 'territorios_de_cuidado_registrar_cpt_modulo');
+
+function territorios_de_cuidado_registrar_cpt_evento() {
+	$labels = array(
+		'name'                  => _x( 'Eventos', 'Post Type General Name', 'territorios_de_cuidado' ),
+		'singular_name'         => _x( 'Evento', 'Post Type Singular Name', 'territorios_de_cuidado' ),
+		'menu_name'             => __( 'Agenda de Eventos', 'territorios_de_cuidado' ),
+		'all_items'             => __( 'Todos os Eventos', 'territorios_de_cuidado' ),
+		'add_new_item'          => __( 'Adicionar Novo Evento', 'territorios_de_cuidado' ),
+		'add_new'               => __( 'Adicionar Novo', 'territorios_de_cuidado' ),
+	);
+	$args = array(
+		'label'                 => __( 'Evento', 'territorios_de_cuidado' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail' ), 
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 6,
+		'menu_icon'             => 'dashicons-calendar-alt', 
+		'has_archive'           => true,
+		'rewrite'               => array( 'slug' => 'evento' ),
+	);
+	register_post_type( 'evento', $args );
+}
+add_action( 'init', 'territorios_de_cuidado_registrar_cpt_evento', 0 );
+
+function territorios_de_cuidado_registrar_cpt_noticia() {
+	$labels = array(
+		'name'                  => _x( 'Notícias', 'Post Type General Name', 'territorios_de_cuidado' ),
+		'singular_name'         => _x( 'Notícia', 'Post Type Singular Name', 'territorios_de_cuidado' ),
+		'menu_name'             => __( 'Notícias', 'territorios_de_cuidado' ),
+		'all_items'             => __( 'Todas as Notícias', 'territorios_de_cuidado' ),
+		'add_new_item'          => __( 'Adicionar Nova Notícia', 'territorios_de_cuidado' ),
+		'add_new'               => __( 'Adicionar Nova', 'territorios_de_cuidado' ),
+	);
+	$args = array(
+		'label'                 => __( 'Notícia', 'territorios_de_cuidado' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 7,
+		'menu_icon'             => 'dashicons-megaphone',
+		'has_archive'           => true,
+		'rewrite'               => array( 'slug' => 'noticia' ),
+	);
+	register_post_type( 'noticia', $args );
+}
+add_action( 'init', 'territorios_de_cuidado_registrar_cpt_noticia', 0 );
