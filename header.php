@@ -17,7 +17,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/global.css" id="stylesheet">
 	<!-- Favicon -->
 	<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/img/brand/favicon.png" type="image/png">
 	<!-- Font Awesome 5 -->
@@ -31,6 +30,8 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/global.css" id="stylesheet">
 
 	<link href="<?php echo get_template_directory_uri(); ?>/assets/libs/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 

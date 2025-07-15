@@ -280,3 +280,115 @@ function territorios_de_cuidado_registrar_cpt_noticia() {
 	register_post_type( 'noticia', $args );
 }
 add_action( 'init', 'territorios_de_cuidado_registrar_cpt_noticia', 0 );
+
+function territorios_de_cuidado_registrar_cpt_parceiro() {
+	$labels = array(
+		'name'                  => _x( 'Parceiros', 'Post Type General Name', 'territorios_de_cuidado' ),
+		'singular_name'         => _x( 'Parceiro', 'Post Type Singular Name', 'territorios_de_cuidado' ),
+		'menu_name'             => __( 'Parceiros', 'territorios_de_cuidado' ),
+		'all_items'             => __( 'Todos os Parceiros', 'territorios_de_cuidado' ),
+		'add_new_item'          => __( 'Adicionar Novo Parceiro', 'territorios_de_cuidado' ),
+		'add_new'               => __( 'Adicionar Novo', 'territorios_de_cuidado' ),
+	);
+	$args = array(
+		'label'                 => __( 'Parceiro', 'territorios_de_cuidado' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'thumbnail' ),
+		'hierarchical'          => false,
+		'public'                => false, 
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 8,
+		'menu_icon'             => 'dashicons-groups',
+		'can_export'            => true,
+	);
+	register_post_type( 'parceiro', $args );
+}
+add_action( 'init', 'territorios_de_cuidado_registrar_cpt_parceiro', 0 );
+
+function territorios_de_cuidado_customizer_settings($wp_customize) {
+	// Dados de impacto
+	$wp_customize->add_section('dados_impacto_section', array(
+			'title'      => __('Dados de Impacto', 'territorios_de_cuidado'),
+			'priority'   => 30,
+	));
+
+	$wp_customize->add_setting('impacto_territorios');
+	$wp_customize->add_setting('impacto_pessoas_mobilizadas');
+	$wp_customize->add_setting('impacto_pessoas_alcancadas');
+	$wp_customize->add_setting('impacto_ciclos_formacao');
+
+	$wp_customize->add_control('impacto_territorios_control', array(
+			'label'      => __('Territórios de Cuidado', 'territorios_de_cuidado'),
+			'section'    => 'dados_impacto_section',
+			'settings'   => 'impacto_territorios',
+			'type'       => 'number',
+	));
+	$wp_customize->add_control('impacto_pessoas_mobilizadas_control', array(
+			'label'      => __('Pessoas mobilizadas diretamente', 'territorios_de_cuidado'),
+			'section'    => 'dados_impacto_section',
+			'settings'   => 'impacto_pessoas_mobilizadas',
+			'type'       => 'number',
+	));
+	$wp_customize->add_control('impacto_pessoas_alcancadas_control', array(
+			'label'      => __('Alcançadas mobilizadas diretamente', 'territorios_de_cuidado'),
+			'section'    => 'dados_impacto_section',
+			'settings'   => 'impacto_pessoas_alcancadas',
+			'type'       => 'number',
+	));
+	$wp_customize->add_control('impacto_ciclos_formacao_control', array(
+			'label'      => __('Ciclos de formação previstos', 'territorios_de_cuidado'),
+			'section'    => 'dados_impacto_section',
+			'settings'   => 'impacto_ciclos_formacao',
+			'type'       => 'number',
+	));
+	
+	// Redes sociais
+	$wp_customize->add_section('redes_sociais_section', array(
+			'title'      => __('Redes Sociais', 'territorios_de_cuidado'),
+			'priority'   => 40,
+	));
+	$wp_customize->add_setting('link_instagram', array(
+			'default'   => '',
+			'transport' => 'refresh',
+	));
+	$wp_customize->add_control('link_instagram_control', array(
+			'label'      => __('Link do Instagram', 'territorios_de_cuidado'),
+			'section'    => 'redes_sociais_section',
+			'settings'   => 'link_instagram',
+			'type'       => 'url', 
+	));
+	$wp_customize->add_setting('link_tiktok', array(
+			'default'   => '',
+			'transport' => 'refresh',
+	));
+	$wp_customize->add_control('link_tiktok_control', array(
+			'label'      => __('Link do TikTok', 'territorios_de_cuidado'),
+			'section'    => 'redes_sociais_section',
+			'settings'   => 'link_tiktok',
+			'type'       => 'url',
+	));
+
+}
+add_action('customize_register', 'territorios_de_cuidado_customizer_settings');
+
+/**
+ * Formata um número para uma versão "humanamente legível" com "mil".
+ * Ex: 9586 se torna "9 mil".
+ *
+ * @param int $numero O número a ser formatado.
+ * @return string O número formatado.
+ */
+function formatar_numero_impacto( $numero ) {
+    // Garante que estamos trabalhando com um número
+    $numero = (int) $numero;
+
+    // Se o número for menor que 1000, retorna ele mesmo, sem formatação.
+    if ( $numero < 1000 ) {
+        return $numero;
+    }
+
+    // Se for 1000 ou maior, faz a formatação
+    $numero_formatado = floor( $numero / 1000 ); // floor() arredonda para baixo
+    return $numero_formatado . ' mil';
+}

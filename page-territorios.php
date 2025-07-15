@@ -118,7 +118,7 @@ get_header();
       <h1 class="text-primary">Territórios</h1>
       
       <div class="d-none d-md-block">
-        <img src="assets/img/territorios-header-img.svg" alt="">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/territorios-header-img.svg" alt="">
       </div>
     </div>
   </div>

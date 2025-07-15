@@ -32,7 +32,6 @@
 							<div class="">
 								<li><a href="/page-noticias.html">Notícias</a></li>
 								<li><a href="/page-cursos.html">Cursos</a></li>
-								<!-- <li><a href="#">Contato</a></li> -->
 							</div>
 						</ul>
 					</div>
@@ -47,7 +46,7 @@
 				<div class="row align-items-center justify-content-md-between py-4 delimiter-top">
 					<div class="col-md-6">
 						<div class="copyright text-sm font-weight-bold text-center text-md-left">
-							Copyright &copy; <a href="https://webpixels.io" class="font-weight-bold" target="_blank">Territórios de Cuidado</a>. All rights reserved.
+							Copyright &copy; <a href="https://webpixels.io" class="font-weight-bold" target="_blank">Territórios de Cuidado</a>. Todos os direitos reservados.
 						</div>
 					</div>
 					<div class="col-md-6">
